@@ -5,17 +5,18 @@ import adafruit_dotstar as dotstar
 
 # Function of script
 
-Animation = 1
+Animation = 3
 # 1 R B bank wave 
 # 2 Solid Color
-# 2 Static Color PerBank
+# 3 Static Color PerBank
 #
 dots_len = 42
-dots_lum = 0.5
+dots_lum = 0.075
 
 Animation_2_Values = [ 200, 0, 100]
 #                       R   G   B
 Animation_3_Values = [ 200, 0, 100, 100, 0, 200, 200, 0, 100]
+Animation_3_Values = [ 200, 0, 0, 0, 200, 0, 0, 0, 200]
 #            Top      R   G   B    Middle R   G  B   Bottom    
 
 
@@ -34,7 +35,7 @@ dots = dotstar.DotStar(board.SCK, board.MOSI, dots_len, brightness=dots_lum, aut
 
 # Left side
 bank_A_Start = 0
-bank_A_End = 20
+bank_A_End = 21
 
 #Left Top Side
 bank_a_subBank1_Start = bank_A_Start
@@ -44,14 +45,14 @@ bank_a_subBank2_Start = 7
 bank_a_subBank2_End =   14
 #Left Bottom
 bank_a_subBank3_Start = 14
-bank_a_subBank3_End =   bank_A_End
+bank_a_subBank3_End =   bank_A_End 
 
 # Right side
 bank_B_start = 21
-bank_B_End = 41
+bank_B_End = 42
 #Right Top
 bank_b_subBank1_Start = 35
-bank_b_subBank1_End =   bank_B_End
+bank_b_subBank1_End =   bank_B_End +1
 #Right Middle
 bank_b_subBank2_Start = 28
 bank_b_subBank2_End =   35
