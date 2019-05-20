@@ -38,26 +38,26 @@ bank_A_End = 20
 
 #Left Top Side
 bank_a_subBank1_Start = bank_A_Start
-bank_a_subBank1_End =   6
+bank_a_subBank1_End =   7
 #Left Middle
-bank_a_subBank2_Start = 7
-bank_a_subBank2_End =   13
+bank_a_subBank2_Start = 8
+bank_a_subBank2_End =   14
 #Left Bottom
-bank_a_subBank3_Start = 14
+bank_a_subBank3_Start = 15
 bank_a_subBank3_End =   bank_A_End
 
 # Right side
 bank_B_start = 21
 bank_B_End = 41
 #Right Top
-bank_b_subBank1_Start = 35
+bank_b_subBank1_Start = 36
 bank_b_subBank1_End =   bank_B_End
 #Right Middle
-bank_b_subBank2_Start = 28
-bank_b_subBank2_End =   34
+bank_b_subBank2_Start = 29
+bank_b_subBank2_End =   35
 #Right Bottom
 bank_b_subBank3_Start = bank_B_start
-bank_b_subBank3_End =   27
+bank_b_subBank3_End =   28
 
 # HELPERS
 # a random color 0 -> 240
@@ -99,7 +99,7 @@ if Animation == 1 :
         R = random_color()
         B = random_color() 
         G = 0
-        L = random_percent_limits(10,dots_lum)
+        L = random_percent_limits(10,int(dots_lum*100))
 
         # Top row Left
         for dot in range(bank_a_subBank1_Start,bank_a_subBank1_End):
