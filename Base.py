@@ -11,11 +11,12 @@ Animation = 3
 # 3 Static Color PerBank
 #
 dots_len = 42
-dots_lum = 0.075
+dots_lum = 0.2
+
 
 Animation_2_Values = [ 200, 0, 100]
 #                       R   G   B
-Animation_3_Values = [ 200, 0, 100, 100, 0, 200, 200, 0, 100]
+#Animation_3_Values = [ 200, 0, 100, 100, 0, 200, 200, 0, 100]
 Animation_3_Values = [ 200, 0, 0, 0, 200, 0, 0, 0, 200]
 #            Top      R   G   B    Middle R   G  B   Bottom    
 
@@ -52,7 +53,7 @@ bank_B_start = 21
 bank_B_End = 42
 #Right Top
 bank_b_subBank1_Start = 35
-bank_b_subBank1_End =   bank_B_End +1
+bank_b_subBank1_End =   bank_B_End 
 #Right Middle
 bank_b_subBank2_Start = 28
 bank_b_subBank2_End =   35
@@ -74,34 +75,48 @@ def random_percent():
 def random_percent_limits(low = 0,high = 100):
     return (random.randrange(low, high) /100)
 
+def signFlip():
+    Output = random.randrange(-1, 2)
+    if Output == 0 :
+        Output = 1
+    return Output
+
 def limit_check(ColorValue=250):
     if ColorValue > 240:
+        print("false")
         return False
     else :
         return True
+        print("true")
 
 def color_modifi(colorValue=100, Shift_Limit=20):
+    print("Shiting")
+    print(colorValue)
     Shift = random.randrange(1,Shift_Limit)
+    print(Shift)
     if  limit_check ( ( colorValue + Shift) ) == True :
-        Shift = Shift * random.randrange(-1, 1)
+        Shift = Shift * signFlip()
+        print(Shift)
         colorValue = abs ( colorValue + Shift)
     else :
         colorValue = abs ( colorValue - Shift)
-
+    print (colorValue)
     return colorValue
     
 
 
 
 if Animation == 1 :
-    while True: 
+    
+    # Baseline Color values
+    R = random_color()
+    B = random_color() 
+    G = 0
+    L = random_percent_limits(10,int(dots_lum*100))
+    while True:
 
-        # Baseline Color values
-        R = random_color()
-        B = random_color() 
-        G = 0
-        L = random_percent_limits(10,int(dots_lum*100))
-
+        R = color_modifi(R, 50)
+        B = color_modifi(B, 50)
         # Top row Left
         for dot in range(bank_a_subBank1_Start,bank_a_subBank1_End):
             dots[dot] = (R , G, B, L)
@@ -110,8 +125,8 @@ if Animation == 1 :
             dots[dot] = (R , G, B, L)
 
         #Change values for Middle Bank
-        R = color_modifi(R, 20)
-        B = color_modifi(B, 40)
+        R = color_modifi(R, 30)
+        B = color_modifi(B, 30)
 
         for dot in range(bank_a_subBank2_Start,bank_a_subBank2_End):
             dots[dot] = (R , G, B, L)
@@ -120,7 +135,7 @@ if Animation == 1 :
             dots[dot] = (R , G, B, L)
 
         R = color_modifi(R, 20)
-        B = color_modifi(B, 40)
+        B = color_modifi(B, 20)
         # Bottom Bank
         for dot in range(bank_a_subBank3_Start,bank_a_subBank3_End):
             dots[dot] = (R , G, B, L)
@@ -129,7 +144,7 @@ if Animation == 1 :
             dots[dot] = (R , G, B, L)
 
         dots.show()
-        time.sleep(1)
+        time.sleep(0.06)
 
 if Animation == 2 :
     # Top row Left
@@ -158,3 +173,46 @@ if Animation == 3 :
     for dot in range(bank_b_subBank3_Start,bank_b_subBank3_End):
         dots[dot] = (Animation_3_Values[6] , Animation_3_Values[7], Animation_3_Values[8])
     dots.show()
+
+if Animation == 4 :
+    
+    # Baseline Color values
+    R = random_color()
+    B = random_color() 
+    G = random_color()
+    L = random_percent_limits(10,int(dots_lum*100))
+    while True:
+        
+        R = color_modifi(R, 30)
+        B = color_modifi(B, 30)
+        G = color_modifi(G, 30)
+        # Top row Left
+        for dot in range(bank_a_subBank1_Start,bank_a_subBank1_End):
+            dots[dot] = (R , G, B, L)
+        # Sub bank other side     
+        for dot in range(bank_b_subBank1_Start,bank_b_subBank1_End):
+            dots[dot] = (R , G, B, L)
+
+        #Change values for Middle Bank
+        R = color_modifi(R, 30)
+        B = color_modifi(B, 30)
+        G = color_modifi(G, 30)
+
+        for dot in range(bank_a_subBank2_Start,bank_a_subBank2_End):
+            dots[dot] = (R , G, B, L)
+        # Sub bank other side     
+        for dot in range(bank_b_subBank2_Start,bank_b_subBank2_End):
+            dots[dot] = (R , G, B, L)
+
+        R = color_modifi(R, 30)
+        B = color_modifi(B, 30)
+        G = color_modifi(G, 30)
+        # Bottom Bank
+        for dot in range(bank_a_subBank3_Start,bank_a_subBank3_End):
+            dots[dot] = (R , G, B, L)
+        # Sub bank other side     
+        for dot in range(bank_b_subBank3_Start,bank_b_subBank3_End):
+            dots[dot] = (R , G, B, L)
+
+        dots.show()
+        time.sleep(0.06)
