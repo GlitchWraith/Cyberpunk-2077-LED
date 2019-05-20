@@ -40,20 +40,20 @@ bank_A_End = 20
 bank_a_subBank1_Start = bank_A_Start
 bank_a_subBank1_End =   7
 #Left Middle
-bank_a_subBank2_Start = 8
+bank_a_subBank2_Start = 7
 bank_a_subBank2_End =   14
 #Left Bottom
-bank_a_subBank3_Start = 15
+bank_a_subBank3_Start = 14
 bank_a_subBank3_End =   bank_A_End
 
 # Right side
 bank_B_start = 21
 bank_B_End = 41
 #Right Top
-bank_b_subBank1_Start = 36
+bank_b_subBank1_Start = 35
 bank_b_subBank1_End =   bank_B_End
 #Right Middle
-bank_b_subBank2_Start = 29
+bank_b_subBank2_Start = 28
 bank_b_subBank2_End =   35
 #Right Bottom
 bank_b_subBank3_Start = bank_B_start
@@ -128,7 +128,7 @@ if Animation == 1 :
             dots[dot] = (R , G, B, L)
 
         dots.show()
-        time.sleep(0.05)
+        time.sleep(1)
 
 if Animation == 2 :
     # Top row Left
@@ -139,10 +139,10 @@ if Animation == 2 :
 if Animation == 3 :
     # Top row Left
     for dot in range(bank_a_subBank1_Start,bank_a_subBank1_End):
-        dots[dot] = (Animation_3_Values[1] , Animation_3_Values[2], Animation_3_Values[2])
+        dots[dot] = (Animation_3_Values[0] , Animation_3_Values[1], Animation_3_Values[2])
     # Sub bank other side     
     for dot in range(bank_b_subBank1_Start,bank_b_subBank1_End):
-        dots[dot] = (Animation_3_Values[1] , Animation_3_Values[2], Animation_3_Values[2])
+        dots[dot] = (Animation_3_Values[0] , Animation_3_Values[1], Animation_3_Values[2])
 
     for dot in range(bank_a_subBank2_Start,bank_a_subBank2_End):
         dots[dot] = (Animation_3_Values[3] , Animation_3_Values[4], Animation_3_Values[5])
